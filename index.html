@@ -43,18 +43,35 @@
     <section>
       <div class="judul-tabel">
         <h2>Daftar Nilai</h2>
-        <input id="cari" type="search" placeholder="Cari nama..." autocomplete="off">
+        <div class="kontrol-tabel">
+          <select id="filter-grade" aria-label="Filter grade">
+            <option value="">Semua Grade</option>
+            <option value="A">Grade A</option>
+            <option value="B">Grade B</option>
+            <option value="C">Grade C</option>
+            <option value="D">Grade D</option>
+            <option value="E">Grade E</option>
+          </select>
+          <input id="cari" type="search" placeholder="Cari nama..." autocomplete="off">
+        </div>
       </div>
       <div class="bungkus-tabel">
         <table>
           <thead>
             <tr>
-              <th>NIM</th><th>Nama</th><th>Tugas</th><th>UTS</th><th>UAS</th>
-              <th>Nilai Akhir</th><th>Grade</th><th>Aksi</th>
+              <th data-kolom="nim">NIM</th>
+              <th data-kolom="nama">Nama</th>
+              <th data-kolom="tugas">Tugas</th>
+              <th data-kolom="uts">UTS</th>
+              <th data-kolom="uas">UAS</th>
+              <th data-kolom="nilaiAkhir">Nilai Akhir</th>
+              <th data-kolom="grade">Grade</th>
+              <th data-kolom="lulus">Status</th>
+              <th>Aksi</th>
             </tr>
           </thead>
           <tbody id="tabel-body">
-            <tr><td colspan="8" class="kosong">Memuat data...</td></tr>
+            <tr><td colspan="9" class="kosong">Memuat data...</td></tr>
           </tbody>
         </table>
       </div>

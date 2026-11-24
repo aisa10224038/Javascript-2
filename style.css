@@ -9,6 +9,7 @@
   --hijau-bg: #ecfdf3;
   --merah: #b91c1c;
   --merah-bg: #fef2f2;
+  --emas-bg: #fefce8;
 }
 
 * { box-sizing: border-box; }
@@ -49,7 +50,7 @@ form {
   grid-template-columns: 1fr 2fr repeat(3, 0.8fr) auto;
   gap: .5rem;
 }
-input, button {
+input, select, button {
   font: inherit;
   padding: .5rem .7rem;
   border: 1px solid var(--garis);
@@ -63,23 +64,33 @@ button {
   border-color: var(--utama);
   cursor: pointer;
 }
-button:hover { filter: brightness(1.1); }
+button:hover:not(:disabled) { filter: brightness(1.1); }
+button:disabled { opacity: 0.65; cursor: not-allowed; }
 
 #pesan { min-height: 1.5rem; margin: .5rem 0 0; }
 #pesan.sukses { color: var(--hijau); }
 #pesan.error { color: var(--merah); }
 
-.judul-tabel { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.judul-tabel { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.kontrol-tabel { display: flex; align-items: center; gap: .5rem; }
 #cari { max-width: 240px; }
 
 .bungkus-tabel { overflow-x: auto; background: var(--kartu); border: 1px solid var(--garis); border-radius: 10px; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: .55rem .75rem; text-align: left; border-bottom: 1px solid var(--garis); white-space: nowrap; }
-th { font-size: .8rem; color: var(--redup); text-transform: uppercase; }
+th { font-size: .8rem; color: var(--redup); text-transform: uppercase; user-select: none; }
+th[data-kolom] { cursor: pointer; }
+th[data-kolom]:hover { color: var(--teks); background: #f1f5f9; }
 tbody tr:last-child td { border-bottom: none; }
-tr.lulus td:nth-child(7) { color: var(--hijau); font-weight: 700; }
+
+tr.lulus td:nth-child(7),
+tr.lulus td:nth-child(8) { color: var(--hijau); font-weight: 700; }
+
 tr.tidak-lulus { background: var(--merah-bg); }
-tr.tidak-lulus td:nth-child(7) { color: var(--merah); font-weight: 700; }
+tr.tidak-lulus td:nth-child(7),
+tr.tidak-lulus td:nth-child(8) { color: var(--merah); font-weight: 700; }
+
+tr.tertinggi { background: var(--emas-bg); }
 td.kosong { text-align: center; color: var(--redup); padding: 1.5rem; }
 
 .btn-hapus {
